@@ -1,7 +1,7 @@
 <div class="container">
       <hr>
       <footer>
-        <p>&copy; Sébastien Adam 2016</p>
+        <p>&copy; Petit Blog 2016</p>
       </footer>
       </div>
     <script src="<?= base_url('js/jquery-2.1.4.min.js'); ?>"></script>

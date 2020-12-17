@@ -26,11 +26,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="<?= site_url('index'); ?>">Sébastien Adam</a>
+          <a class="navbar-brand" href="<?= site_url('index'); ?>">Petit Blog</a>
         </div>
         <div class="collapse navbar-collapse" id="main_nav">
           <ul class="nav navbar-nav">
             <li><?= anchor('index', "Accueil"); ?></li>
+            <li><?= anchor('contact ', "Contact "); ?></li>
           </ul>
         </div>
       </div>
