@@ -10,11 +10,19 @@ class Site extends CI_Controller {
         $this->load->view('common/footer', $data);
     }
 
-    public function contact () {
+    public function contact() {
+        $this->load->helper("form");
+        $this->load->library('form_validation');
+
         $data["title"] = "Contact";
 
         $this->load->view('common/header', $data);
-        $this->load->view('site/contact', $data);
+        if($this->form_validation->run()) {
+            // TODO: envoyer le mail
+            $this->load->view('site/contact_result', $data);
+        } else {
+            $this->load->view('site/contact', $data);
+        }
         $this->load->view('common/footer', $data);
     }
 }
