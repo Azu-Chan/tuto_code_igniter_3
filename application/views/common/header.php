@@ -1,12 +1,13 @@
-<!DOCTYPE html>
+<?= doctype('html5'); ?>
 <html>
   <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?= meta("X-UA-Compatible", "IE=edge", 'http-equiv'); ?>
+    <?= meta("viewport", "width=device-width, initial-scale=1"); ?>
+    <?= meta("UTF-8", "", 'charset'); ?>
     <title><?= $title ?></title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="<?= base_url('css/bootstrap.min.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('css/bootstrap-theme.min.css'); ?>">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -25,11 +26,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/index.php">Sébastien Adam</a>
+          <a class="navbar-brand" href="<?= site_url('index'); ?>">Sébastien Adam</a>
         </div>
         <div class="collapse navbar-collapse" id="main_nav">
           <ul class="nav navbar-nav">
-            <li><a href="/index.html">Accueil</a></li>
+            <li><?= anchor('index', "Accueil"); ?></li>
           </ul>
         </div>
       </div>
