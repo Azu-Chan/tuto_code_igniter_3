@@ -49,6 +49,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'welcome';
-$route['404_override'] = '';
-$route['translate_uri_dashes'] = FALSE;
+$route ['default_controller'] = 'site'; // Si aucun paramètre n'est donné, c'est
+                                        // la route qui sera utilisée. Il n'est
+                                        // pas nécessaire d'indiquer la méthode
+                                        // 'index()' c'est celle qui est appelée
+                                        // par défaut
+$route ['(:any)'] = 'site/$1'; // si un seul paramètre est donné, il sera utilisé
+                               // comme méthode du contrôleur 'site'. Cela per-
+                               // mettra de 'cacher' ce dernier dans les adresses.
