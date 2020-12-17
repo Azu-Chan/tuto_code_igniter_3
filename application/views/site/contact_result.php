@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
-    <?= heading( $title); ?>
+    <?= heading($title); ?>
   </div>
-  <div class="row alert alert-success" role="alert">
-    Merci de nous avoir envoyé ce mail. Nous y répondrons dans les meilleurs délais.
+  <div class="row alert <?= $result_class; ?>" role="alert">
+    <?= $result_message; ?>
   </div>
   <div class="row text-center">
-    <?= anchor("index", "Fermer", ['class' => "btn btn-primary"]); ?>
+    <?= anchor("index", "Fermer", ['class' => "btn btn-default"]); ?>
   </div>
 </div>
