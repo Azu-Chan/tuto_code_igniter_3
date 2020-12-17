@@ -43,4 +43,11 @@ class Site extends CI_Controller {
         }
         $this->load->view('common/footer', $data);
     }
+
+    public function apropos() {
+        $data["title"] = "À propos de moi...";
+        $this->load->view('common/header', $data);
+        $this->load->view('site/apropos', $data);
+        $this->load->view('common/footer', $data);
+    }
 }

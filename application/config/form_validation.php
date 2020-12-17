@@ -14,6 +14,11 @@ $config = array(
             'rules' => array('valid_email', 'required')
         ), 
         array(
+            'field' => 'emailconf',
+            'label' => 'Confirmation e-mail',
+            'rules' => array('valid_email', 'required', 'matches[email ]')
+        ),
+        array(
             'field' => 'title',
             'label' => 'Titre',
             'rules' => 'required'

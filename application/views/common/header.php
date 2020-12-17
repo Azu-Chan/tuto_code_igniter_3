@@ -32,6 +32,7 @@
           <ul class="nav navbar-nav">
             <li><?= anchor('index', "Accueil"); ?></li>
             <li><?= anchor('contact ', "Contact "); ?></li>
+            <li><?= anchor('apropos', "À propos"); ?></li>
           </ul>
         </div>
       </div>
