@@ -50,4 +50,9 @@ class Site extends CI_Controller {
         $this->load->view('site/apropos', $data);
         $this->load->view('common/footer', $data);
     }
+
+    public function session_test() {
+        $this->session->count ++;
+        echo"Valeur :" . $this->session->count;
+    }
 }
