@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS login;
 DROP TABLE IF EXISTS article;
+DROP TABLE IF EXISTS login;
 
 CREATE TABLE login (
     id int(11) NOT NULL, 
@@ -29,3 +29,15 @@ ALTER TABLE article ADD CONSTRAINT fk_article_login_id  FOREIGN KEY(author_id) R
 
 INSERT INTO login (username, password, status) 
 VALUES ('admin', '$2y$10$UyXEYppMuVnYN3Vd8l/enu3UoLr9zPTOXuQGWiZ/h4GQejoCJvlH.', 'A'); # password
+
+CREATE VIEW article_username
+AS
+SELECT article.id,
+       title,
+       alias,
+       content,
+       date,
+       article.status,
+       username AS author,
+       author_id
+FROM article INNER JOIN login ON article.author_id = login.id;
