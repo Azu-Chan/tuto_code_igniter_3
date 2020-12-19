@@ -145,4 +145,21 @@ class Blog extends CI_Controller {
             $this->load->view('common/footer', $data);
         }
     }
+
+    public function publication($id = NULL) {
+        if (!$this->auth_user->is_connected) {
+            redirect('blog/index');
+        }
+        if (!is_numeric($id)) {
+            redirect('blog/index');
+        }
+        $this->load->model('article');
+        $this->article->load($id, TRUE);
+        if (!$this->article->is_found) {
+            redirect('blog/index');
+        }
+        $this->article->status = 'P';
+        $this->article->save();
+        redirect('blog/' . $this->article->alias . '_' . $id);
+    }
 }
