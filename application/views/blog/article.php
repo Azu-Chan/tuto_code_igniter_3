@@ -28,7 +28,10 @@
       <ul class="nav nav-pills nav-stacked">
         <li><?= anchor('blog/index', "Liste articles") ?></li>
         <?php if ($this->auth_user->is_connected) : ?>
-          <li><?= anchor('blog/nouvel_article', "Nouvel article") ?></li>
+        <li>
+          <?= anchor(['blog', 'edition', $this->article->id], "Modifier article") ?>
+        </li>
+        <li><?= anchor('blog/edition', "Nouvel article") ?></li>
         <?php endif; ?>
       </ul>
     </div>

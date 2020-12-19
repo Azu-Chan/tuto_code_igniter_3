@@ -68,5 +68,47 @@ class Blog extends CI_Controller {
         } else {
             redirect('blog/index');
         }
+    }  
+
+    public function edition($id = NULL) { // modification nom méthode et
+        // $id comme paramètre
+        if (!$this->auth_user->is_connected) {
+            redirect('blog/index');
+        }
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $this->load->model('article_status');
+        $this->load->model('article'); // on charge le modèle Article() ici
+
+        if ($id !== NULL) {        // si identifiant donné, modification
+            if (is_numeric($id)) { // vérification validité de l'identifiant
+                $this->article->load($id, TRUE);
+                if (!$this->article->is_found) {
+                    redirect('blog/index');
+                }
+            } else {
+                redirect('blog/index');
+            }
+            $data['title'] = "Modification article";
+        } else {                  // si aucun identifiant donné, création
+            $data['title'] = "Nouvel article";
+            $this->article->author_id = $this->auth_user->id;
+        }
+        $this->set_blog_post_validation();
+
+        if ($this->form_validation->run() == TRUE) {
+            // le modèle Article() n'est plus chargé ici
+            // l'auteur de l'article n'est plus défini ici
+            $this->article->content = $this->input->post('content');
+            $this->article->status = $this->input->post('status');
+            $this->article->title = $this->input->post('title');
+            $this->article->save();
+            if ($this->article->is_found) {
+                redirect('blog/' . $this->article->alias . '_' . $this->article->id);
+            }
+        }
+        $this->load->view('common/header', $data);
+        $this->load->view('blog/form', $data);
+        $this->load->view('common/footer', $data);
     }
 }

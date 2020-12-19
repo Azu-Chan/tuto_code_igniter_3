@@ -9,18 +9,14 @@
     <div class="col-md-10">
       <ul class="nav nav-pills nav-justified">
         <?php if ($this->auth_user->is_connected) : ?>
-          <li role="presentation">
-            <?= anchor('blog/nouvel_article', "Nouvel article"); ?>
-          </li>
+          <li role="presentation"><?= anchor('blog/edition', "Nouvel article"); ?></li>
         <?php endif; ?>
       </ul>
     </div>
-    <div class="col-md-2">
-      <p class="text-right">
-        Nombre d'articles : <?= $this->articles->num_items; ?>
-      </p>
-    </div>
+  <div class="col-md-2">
+    <p class="text-right">Nombre d'articles : <?= $this->articles->num_items; ?></p>
   </div>
+</div>
   <div class="row">
     <?php if ($this->articles->has_items) : ?>
       <?php
