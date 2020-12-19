@@ -125,6 +125,13 @@ class Article extends CI_Model {
         }
     }
 
+    public function delete() {
+        if ($this->is_found) {
+            $this->_status = 'D';
+            $this->save();
+        }
+    }
+
     protected function set_property_author_id($author_id) {
         $this->_author_id = $author_id;
     }

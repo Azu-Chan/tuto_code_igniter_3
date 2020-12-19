@@ -59,6 +59,9 @@ class Blog extends CI_Controller {
         $this->load->model('article_status');
         $this->article->load($id, $this->auth_user->is_connected);
 
+        $data['title'] = htmlentities($this->article->title);
+        $data['script'] = '<script src="' . base_url('js/article.js') . '"></script>';
+
         if ($this->article->is_found) {
             $data['title'] = htmlentities($this->article->title);
 
@@ -110,5 +113,36 @@ class Blog extends CI_Controller {
         $this->load->view('common/header', $data);
         $this->load->view('blog/form', $data);
         $this->load->view('common/footer', $data);
+    }
+
+    public function suppression($id = NULL) {
+        if (!$this->auth_user->is_connected) {
+            redirect('blog/index');
+        }
+        if (!is_numeric($id)) {
+            redirect('blog/index');
+        }
+        $this->load->model('article');
+        $this->article->load($id, TRUE);
+        if (!$this->article->is_found) {
+            redirect('blog/index');
+        }
+        $this->load->helper('form');
+        if ($this->input->is_ajax_request()) {
+            // nous avons reçu une requête ajax
+            $this->load->view('blog/delete_confirm');
+        } else {
+            // nous avons reçu une requête classique
+            if ($this->input->post('confirm') === NULL) {
+                $data['action'] = "confirm";
+            } else {
+                $this->article->delete();
+                $data['action'] = "result";
+            }
+            $data['title'] = "Suppression article";
+            $this->load->view('common/header', $data);
+            $this->load->view('blog/delete', $data);
+            $this->load->view('common/footer', $data);
+        }
     }
 }
