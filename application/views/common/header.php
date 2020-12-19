@@ -31,7 +31,8 @@
         <div class="collapse navbar-collapse" id="main_nav">
           <ul class="nav navbar-nav">
             <li><?= anchor('index', "Accueil"); ?></li>
-            <li><?= anchor('contact ', "Contact "); ?></li>
+            <li><?= anchor('blog/index ', "Blog"); ?></li>
+            <li><?= anchor('contact ', "Contact"); ?></li>
             <?php if ($this->auth_user->is_connected) : ?>
               <li>
                 <?= anchor('panneau_de_controle/index', "Panneau de contrôle"); ?>
