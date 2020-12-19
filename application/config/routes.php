@@ -54,6 +54,8 @@ $route ['default_controller'] = 'site'; // Si aucun paramètre n'est donné, c'e
                                         // pas nécessaire d'indiquer la méthode
                                         // 'index()' c'est celle qui est appelée
                                         // par défaut
+$route ['blog/(:any)_(:num)'] = 'blog/article/$2'; // $2 se réfère au contenu du
+                                                   // deuxième jeu de parenthèses
 $route['blog'] = 'blog/index'; // l'URI 'blog' sera redirigée vers 'blog/index'
 $route ['(:any)'] = 'site/$1'; // si un seul paramètre est donné, il sera utilisé
                                // comme méthode du contrôleur 'site'. Cela per-
